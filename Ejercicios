@@ -1,0 +1,116 @@
+//#3//esta es una prueba//
+
+// La funcion llamada 'buscarAmigo' recibe como argumento un array llamado 'amigos' que contiene 
+// en cada posición del arreglo un objeto que tiene como propiedades 'nombre' y 'edad'. También 
+// recibe un string llamado 'nombre'. 
+// Debe devolver el objeto cuya propiedad 'nombre' coincida con el string 'nombre' recibido por argumento. 
+// Ej: 
+// var amigos = [{ nombre: 'toni', edad: 33 } , { nombre: 'Emi', edad: 25 }]; 
+// buscarAmigo(amigos, 'toni') debe devolver { nombre: 'toni', edad: 33 }; 
+// Tu código aca: 
+
+var amigos = [{nombre: 'toni', edad: 33 } , { nombre: 'Emi', edad: 25 }];
+function buscarAmigo(amigos, nombre) { 
+var i = 0;
+// Mientras queden elementos por comprobar en el array y el nombre del elemento actual no sea el nombre que buscamos, pasamos al elemento siguiente
+while (i < amigos.length && amigos[i].nombre != nombre) {
+  i++;
+}
+// Si el motivo por el que se ha salido del array es porque no quedan elementos por comprobar devolver null (no se ha encontrado). En caso contrario devolver el elemento en la posición i (posición en la que se ha encontrado ele lemento)
+if (i < amigos.length) {
+  return amigos[i];
+}
+else {
+  return null;
+}
+}
+
+//1//
+function menorMayor(numeros) {
+  // La función llamada 'menorMayor' recibe como argumento un arreglo de números llamado 'numeros' y debe devolver un
+  // arreglo que contenga el menor número del arreglo 'numeros' en la posición cero y el mayor número del arreglo
+  // 'numeros' en la posición 1.
+  // Ej:
+  // menorMayor([4, 6, 1, 7, 15]) debe retornar [1, 15]
+  // ya que 1 es el número más chico (menor) dentro del arreglo [4, 6, 1, 7, 15]
+  // y 15 es el número más grande (mayor) dentro del arreglo [4, 6, 1, 7, 15]
+  // Tu código aca:
+  return [Math.min(...numeros),Math.max(...numeros)]
+}
+//2//
+function stringMasLarga(strings) { 
+  // La función llamada 'stringMasLarga', recibe como argumento un arreglo de strings llamado 'strings' 
+  // y debe devolver el string más largo que hay en el arreglo (Es decir el de mayor cantidad de caracteres) 
+   // Ej: 
+   // stringMasLarga(['hi', 'hello', 'ni hao', 'guten tag']); debe retornar 'guten tag'  
+  // stringMasLarga(['JavaScript', 'HTML', 'CSS']); debe retornar 'JavaScript' 
+    // Tu código aca:
+    var largo = strings[0];
+    for ( i = 0 ; i < strings.length; i ++){
+      if ( strings[i].length > largo.length){
+        largo = strings[i];
+      }
+    }
+    return largo;
+  }
+  
+  function sumArray(array, n) { 
+
+ //4
+// La función llamada 'sumArray' recibe como argumento un arreglo de números ordenados llamado 'array' y un número 
+// entero llamdo 'n' y debe devolver true si alguna combinación de dos números cualesquiera del arreglo sumados 
+// dan n, y devuelva false si ninguna combinación de dos números sumados da como resultado el número n. 
+// Ej: 
+// sumArray([2,5,7,10,11,15,20], 13) debería devolver true ya que 2 + 11 = 13 
+// sumArray([2,5,7,10,11,15,20], 14) debería devolver false ya que no es posible sumar 14 con dos números del arreglo 
+// Pista: Podes usar bucles/ciclos anidados 
+// Aclaración: No es válido sumar el mismo número dos veces 
+// Ej: 
+// sumArray([2,5,7,10,11,15,20], 4) Si bien 2 + 2 = 4 no está permitido sumar el mismo número dos veces 
+// por lo tanto también debería devolver false en este caso 
+// Tu código aca: 
+
+  const size = array.length;
+
+  for (let i = 0; i < size; i++) {
+    const a = array[i];
+
+    for (let j = 0; j < size; j++) {
+      if (i === j) continue;
+      const b = array[j];
+      if (a + b === n) return true;
+    }
+  }
+
+  return false;
+}
+// La función llamada 'menorMayor' recibe como argumento un arreglo de números llamado 'numeros' y debe devolver un 
+// arreglo que contenga el menor número del arreglo 'numeros' en la posición cero y el mayor número del arreglo 
+// 'numeros' en la posición 1. 
+// Ej: 
+// menorMayor([4, 6, 1, 7, 15]) debe retornar [1, 15] 
+// ya que 1 es el número más chico (menor) dentro del arreglo [4, 6, 1, 7, 15] 
+// y 15 es el número más grande (mayor) dentro del arreglo [4, 6, 1, 7, 15] 
+// Tu código aca: 
+let numeros = [-3,45,23,7,31,90,1];
+
+function menorMayor(arreglo){
+let menor = Infinity;//un número muy grande
+let mayor = -Infinity;//un número muy pequeño
+let resultado = [0,0];// el arreglo a devolver
+
+for (let i = 0; i< numeros.length; i++){ 
+ if (numeros[i] < menor){
+ menor = numeros[i];// el nuevo valor de menor
+ resultado[0] = menor;  
+ }
+
+ if (numeros[i] > mayor){
+ mayor = numeros[i]; //el nuevo valor de mayor
+ resultado[1] = mayor;
+ }
+}
+return resultado;
+}
+
+console.log(menorMayor(numeros))
